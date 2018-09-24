@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="theme_primary">#f5f5f5</color>
-    <color name="theme_primary_dark">#e0e0e0</color>
-    <color name="theme_accent">#167c80</color>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#eaeaea</color>
+    <color name="theme_accent">@color/dot_blue</color>
 
     <color name="inverted">#212121</color>
     <color name="ic_background">#333333</color>
+
+    <!-- Custom colours for dot -->
+    <color name="dot_blue">#3C85ED</color>
+    <color name="dot_green">#2CA851</color>
+    <color name="dot_yellow">#F5B700</color>
+    <color name="dot_red">#E34136</color>
+    <color name="dot_purple">#8a65ef</color>
+    <color name="dot_grey">#727272</color>
+    <color name="dot_sky">#05a1bc</color>
+    <color name="dot_teal">#0F856D</color>
+    <color name="dot_violet">#6872ea</color>
+    <color name="dot_pink">#ed4fc4</color>
+    <color name="scrim">#22000000</color>
+    <color name="smoke_color">#8eaeaeae</color>
 </resources>

@@ -20,10 +20,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.SystemClock;
 import android.os.SystemProperties;
-import android.support.v7.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 import android.util.Log;
 
-import com.dotos.updater.R;
 import com.dotos.updater.misc.Constants;
 import com.dotos.updater.misc.FileUtils;
 import com.dotos.updater.misc.Utils;

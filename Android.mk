@@ -9,8 +9,8 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src)
 LOCAL_USE_AAPT2 := true
 
 LOCAL_STATIC_ANDROID_LIBRARIES := \
-    android-support-design \
-    android-support-transition \
+    com-google-android-material-material \
+    androidx-transition-transition \
     android-support-v4 \
     android-support-v7-appcompat \
     android-support-v7-cardview \
@@ -20,7 +20,7 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
 LOCAL_RESOURCE_DIR := \
     $(LOCAL_PATH)/res
 
-LOCAL_PACKAGE_NAME := Updater
+LOCAL_PACKAGE_NAME := SystemUpdates
 LOCAL_PRIVATE_PLATFORM_APIS := true
 LOCAL_PRIVILEGED_MODULE := true
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags

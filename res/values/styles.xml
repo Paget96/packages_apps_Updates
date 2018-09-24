@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
-        <item name="colorPrimary">@color/theme_primary</item>
-        <item name="colorPrimaryDark">@color/theme_primary_dark</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/theme_accent</item>
         <item name="windowActionModeOverlay">true</item>
-        <item name="android:windowLightStatusBar">@bool/theme_is_light</item>
-        <item name="android:windowLightNavigationBar">@bool/theme_is_light</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -30,5 +30,31 @@
         <item name="android:overlapAnchor">true</item>
         <item name="android:dropDownVerticalOffset">8dp</item>
         <item name="android:dropDownHorizontalOffset">-16dp</item>
+    </style>
+
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet_dialog_fragment</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog">
+        <item name="colorAccent">@color/dot_blue</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">?colorPrimary</item>
+    </style>
+
+    <style name="RoundedDialog">
+        <item name="android:background">@drawable/dialog_bg</item>
+        <item name="android:elevation">@dimen/dialog_elevation</item>
+    </style>
+
+    <style name="Theme.RoundedDialog" parent="@style/Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
     </style>
 </resources>

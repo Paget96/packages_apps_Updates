@@ -16,6 +16,7 @@
  */
 package com.dotos.updater;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -24,13 +25,16 @@ import android.content.res.Resources;
 import android.os.BatteryManager;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.view.ContextThemeWrapper;
-import android.support.v7.view.menu.MenuBuilder;
-import android.support.v7.view.menu.MenuPopupHelper;
-import android.support.v7.widget.PopupMenu;
-import android.support.v7.widget.RecyclerView;
+
+import com.dotos.updater.ui.ChangelogLayout;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.view.ContextThemeWrapper;
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.view.menu.MenuPopupHelper;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.format.Formatter;
 import android.text.method.LinkMovementMethod;
@@ -43,6 +47,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -93,17 +99,22 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
 
         private ProgressBar mProgressBar;
         private TextView mProgressText;
+        private LinearLayout mDetails;
+        private ChangelogLayout changelogLayout;
 
         public ViewHolder(final View view) {
             super(view);
-            mAction = (Button) view.findViewById(R.id.update_action);
+            mAction = view.findViewById(R.id.update_action);
 
-            mBuildDate = (TextView) view.findViewById(R.id.build_date);
-            mBuildVersion = (TextView) view.findViewById(R.id.build_version);
-            mBuildSize = (TextView) view.findViewById(R.id.build_size);
+            mBuildDate = view.findViewById(R.id.build_date);
+            mBuildVersion = view.findViewById(R.id.build_version);
+            mBuildSize = view.findViewById(R.id.build_size);
 
-            mProgressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
-            mProgressText = (TextView) view.findViewById(R.id.progress_text);
+            mProgressBar = view.findViewById(R.id.progress_bar);
+            mProgressText = view.findViewById(R.id.progress_text);
+
+            mDetails = view.findViewById(R.id.update_progress);
+            changelogLayout = view.findViewById(R.id.changelog_view);
         }
     }
 
@@ -129,9 +140,9 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
 
     private void handleActiveStatus(ViewHolder viewHolder, UpdateInfo update) {
         boolean canDelete = false;
-
         final String downloadId = update.getDownloadId();
         if (mUpdaterController.isDownloading(downloadId)) {
+            viewHolder.mDetails.setVisibility(View.VISIBLE);
             canDelete = true;
             String downloaded = StringGenerator.bytesToMegabytes(mActivity,
                     update.getFile().length());
@@ -165,6 +176,7 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
             viewHolder.mProgressText.setText(R.string.list_verifying_update);
             viewHolder.mProgressBar.setIndeterminate(true);
         } else {
+            viewHolder.mDetails.setVisibility(View.GONE);
             canDelete = true;
             setButtonAction(viewHolder.mAction, Action.RESUME, downloadId, !isBusy());
             String downloaded = StringGenerator.bytesToMegabytes(mActivity,
@@ -208,9 +220,8 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
         }
         String fileSize = Formatter.formatShortFileSize(mActivity, update.getFileSize());
         viewHolder.mBuildSize.setText(fileSize);
-
-        viewHolder.mProgressBar.setVisibility(View.INVISIBLE);
-        viewHolder.mProgressText.setVisibility(View.INVISIBLE);
+        viewHolder.mProgressBar.setVisibility(View.GONE);
+        viewHolder.mProgressText.setVisibility(View.GONE);
         viewHolder.mBuildSize.setVisibility(View.VISIBLE);
     }
 
@@ -229,6 +240,11 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
             viewHolder.mAction.setText(R.string.action_download);
             return;
         }
+        viewHolder.changelogLayout.setSystem(update.getSystemChangelog());
+        viewHolder.changelogLayout.setSettings(update.getSettingsChangelog());
+        viewHolder.changelogLayout.setSecurityPatch(update.getSecurityPatchChangelog());
+        viewHolder.changelogLayout.setMisc(update.getMiscChangelog());
+        viewHolder.changelogLayout.setDevice(update.getDeviceChangelog());
 
         viewHolder.itemView.setSelected(downloadId.equals(mSelectedDownload));
 
@@ -276,6 +292,7 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
             return;
         }
         notifyItemChanged(mDownloadIds.indexOf(downloadId));
+
     }
 
     public void removeItem(String downloadId) {
@@ -297,7 +314,7 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
         }
 
         View checkboxView = LayoutInflater.from(mActivity).inflate(R.layout.checkbox_view, null);
-        CheckBox checkbox = (CheckBox) checkboxView.findViewById(R.id.checkbox);
+        CheckBox checkbox = checkboxView.findViewById(R.id.checkbox);
         checkbox.setText(R.string.checkbox_mobile_data_warning);
 
         new AlertDialog.Builder(mActivity)
@@ -479,6 +496,7 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
                 .setNegativeButton(android.R.string.cancel, null);
     }
 
+    @SuppressLint("RestrictedApi")
     private void startActionMode(final UpdateInfo update, final boolean canDelete, View anchor) {
         mSelectedDownload = update.getDownloadId();
         notifyItemChanged(update.getDownloadId());
@@ -545,7 +563,7 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
                 .setPositiveButton(android.R.string.ok, null)
                 .setMessage(message)
                 .show();
-        TextView textView = (TextView) dialog.findViewById(android.R.id.message);
+        TextView textView = dialog.findViewById(android.R.id.message);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
@@ -558,7 +576,7 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
         int percent = Math.round(100.f * intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 100) /
                 intent.getIntExtra(BatteryManager.EXTRA_SCALE, 100));
         int plugged = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0);
-        int required = (plugged & BatteryManager.BATTERY_PLUGGED_ANY) != 0 ?
+        int required = (plugged != 0 && (BatteryManager.BATTERY_PLUGGED_USB != 0 || BatteryManager.BATTERY_PLUGGED_AC != 0 || BatteryManager.BATTERY_PLUGGED_WIRELESS != 0))  ?
                 mActivity.getResources().getInteger(R.integer.battery_ok_percentage_charging) :
                 mActivity.getResources().getInteger(R.integer.battery_ok_percentage_discharging);
         return percent >= required;

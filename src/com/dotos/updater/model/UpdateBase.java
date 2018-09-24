@@ -25,6 +25,11 @@ public class UpdateBase implements UpdateBaseInfo {
     private String mType;
     private String mVersion;
     private long mFileSize;
+    private String c_System;
+    private String c_Settings;
+    private String c_Misc;
+    private String c_Device;
+    private String c_SecPatch;
 
     public UpdateBase() {
     }
@@ -37,6 +42,11 @@ public class UpdateBase implements UpdateBaseInfo {
         mType = update.getType();
         mVersion = update.getVersion();
         mFileSize = update.getFileSize();
+        c_System = update.getSystemChangelog();
+        c_Settings = update.getSettingsChangelog();
+        c_Misc = update.getMiscChangelog();
+        c_Device = update.getDeviceChangelog();
+        c_SecPatch = update.getSecurityPatchChangelog();
     }
 
     @Override
@@ -96,6 +106,51 @@ public class UpdateBase implements UpdateBaseInfo {
     @Override
     public long getFileSize() {
         return mFileSize;
+    }
+
+    @Override
+    public String getSystemChangelog() {
+        return c_System;
+    }
+
+    public void setC_System(String c_System) {
+        this.c_System = c_System;
+    }
+
+    public void setC_Settings(String c_Settings) {
+        this.c_Settings = c_Settings;
+    }
+
+    public void setC_Device(String c_Device) {
+        this.c_Device = c_Device;
+    }
+
+    public void setC_Misc(String c_Misc) {
+        this.c_Misc = c_Misc;
+    }
+
+    public void setC_SecPatch(String c_SecPatch) {
+        this.c_SecPatch = c_SecPatch;
+    }
+
+    @Override
+    public String getSettingsChangelog() {
+        return c_Settings;
+    }
+
+    @Override
+    public String getDeviceChangelog() {
+        return c_Device;
+    }
+
+    @Override
+    public String getMiscChangelog() {
+        return c_Misc;
+    }
+
+    @Override
+    public String getSecurityPatchChangelog() {
+        return c_SecPatch;
     }
 
     public void setFileSize(long fileSize) {

@@ -91,6 +91,16 @@ public class Utils {
         update.setFileSize(object.getLong("size"));
         update.setDownloadUrl(object.getString("url"));
         update.setVersion(object.getString("version"));
+        if (!object.getString("changelog_system").isEmpty())
+            update.setC_System(object.getString("changelog_system"));
+        if (!object.getString("changelog_device").isEmpty())
+            update.setC_Device(object.getString("changelog_device"));
+        if (!object.getString("changelog_misc").isEmpty())
+            update.setC_Misc(object.getString("changelog_misc"));
+        if (!object.getString("changelog_settings").isEmpty())
+            update.setC_Settings(object.getString("changelog_settings"));
+        if (!object.getString("changelog_securitypatch").isEmpty())
+            update.setC_SecPatch(object.getString("changelog_securitypatch"));
         return update;
     }
 
@@ -100,10 +110,10 @@ public class Utils {
             Log.d(TAG, update.getName() + " is older than/equal to the current build");
             return false;
         }
-        if (!update.getType().equalsIgnoreCase(SystemProperties.get(Constants.PROP_RELEASE_TYPE))) {
+        /*if (!update.getType().equalsIgnoreCase(SystemProperties.get(Constants.PROP_RELEASE_TYPE))) {
             Log.d(TAG, update.getName() + " has type " + update.getType());
             return false;
-        }
+        }*/
         return true;
     }
 
@@ -118,14 +128,14 @@ public class Utils {
             throws IOException, JSONException {
         List<UpdateInfo> updates = new ArrayList<>();
 
-        String json = "";
+        StringBuilder json = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             for (String line; (line = br.readLine()) != null;) {
-                json += line;
+                json.append(line);
             }
         }
 
-        JSONObject obj = new JSONObject(json);
+        JSONObject obj = new JSONObject(json.toString());
         JSONArray updatesList = obj.getJSONArray("response");
         for (int i = 0; i < updatesList.length(); i++) {
             if (updatesList.isNull(i)) {

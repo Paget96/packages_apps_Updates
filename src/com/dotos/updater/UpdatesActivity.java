@@ -24,32 +24,32 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.icu.text.DateFormat;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.preference.PreferenceManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SimpleItemAnimator;
-import android.support.v7.widget.Toolbar;
+
+import com.dotos.updater.ui.ChangelogLayout;
+import com.dotos.updater.ui.ChangelogSheet;
+import com.dotos.updater.ui.RoundedDialog;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.preference.PreferenceManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
+
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
-import android.widget.Switch;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.json.JSONException;
+
 import com.dotos.updater.controller.UpdaterController;
 import com.dotos.updater.controller.UpdaterService;
 import com.dotos.updater.download.DownloadClient;
@@ -58,6 +58,7 @@ import com.dotos.updater.misc.Constants;
 import com.dotos.updater.misc.StringGenerator;
 import com.dotos.updater.misc.Utils;
 import com.dotos.updater.model.UpdateInfo;
+import com.dotos.updater.ui.PreferencesSheet;
 
 import java.io.File;
 import java.io.IOException;
@@ -75,13 +76,13 @@ public class UpdatesActivity extends UpdatesListActivity {
 
     private View mRefreshIconView;
     private RotateAnimation mRefreshAnimation;
+    private ChangelogSheet mChangelogSheet = new ChangelogSheet();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_updates);
-
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
         mAdapter = new UpdatesListAdapter(this);
         recyclerView.setAdapter(mAdapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -109,49 +110,36 @@ public class UpdatesActivity extends UpdatesListActivity {
             }
         };
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TextView headerTitle = (TextView) findViewById(R.id.header_title);
-        headerTitle.setText(getString(R.string.header_title_text,
-                BuildInfoUtils.getBuildVersion()));
+        TextView headerTitle = findViewById(R.id.header_title);
+        headerTitle.setText(getString(R.string.header_title_text));
+
+        TextView headerVersion = findViewById(R.id.header_version);
+        String build_version = BuildInfoUtils.getBuildVersion();
+        if (build_version.equals("v3.0")) {
+            headerVersion.setText(String.format("version %s", build_version));
+        } else {
+            headerVersion.setText(String.format("version %s", "null"));
+            RoundedDialog dialog = new RoundedDialog(this, R.style.Theme_RoundedDialog);
+            View view = View.inflate(this, R.layout.rom_validator, null);
+            Button cancel_dialog = view.findViewById(R.id.dialog_cancel);
+            cancel_dialog.setOnClickListener(v -> dialog.cancel());
+            dialog.setContentView(view);
+            dialog.setCancelable(false);
+            dialog.show();
+        }
 
         updateLastCheckedString();
 
-        TextView headerBuildVersion = (TextView) findViewById(R.id.header_build_version);
-        headerBuildVersion.setText(
-                getString(R.string.header_android_version, Build.VERSION.RELEASE));
+        ImageButton refresh = findViewById(R.id.updater_refresh);
+        refresh.setOnClickListener(v -> downloadUpdatesList(true));
 
-        TextView headerBuildDate = (TextView) findViewById(R.id.header_build_date);
-        headerBuildDate.setText(StringGenerator.getDateLocalizedUTC(this,
-                DateFormat.LONG, BuildInfoUtils.getBuildDateTimestamp()));
+        ImageButton changelog = findViewById(R.id.updater_changelog);
+        changelog.setOnClickListener(v -> mChangelogSheet.show(getSupportFragmentManager(), mChangelogSheet.getTag()));
 
-        // Switch between header title and appbar title minimizing overlaps
-        final CollapsingToolbarLayout collapsingToolbar =
-                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        final AppBarLayout appBar = (AppBarLayout) findViewById(R.id.app_bar);
-        appBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            boolean mIsShown = false;
+        ImageButton preferences_Start = findViewById(R.id.updater_preferences);
+        preferences_Start.setOnClickListener(v -> showPreferencesDialog());
 
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                int scrollRange = appBarLayout.getTotalScrollRange();
-                if (!mIsShown && scrollRange + verticalOffset < 10) {
-                    collapsingToolbar.setTitle(getString(R.string.display_name));
-                    mIsShown = true;
-                } else if (mIsShown && scrollRange + verticalOffset > 100) {
-                    collapsingToolbar.setTitle(null);
-                    mIsShown = false;
-                }
-            }
-        });
-
-        if (!Utils.hasTouchscreen(this)) {
-            // This can't be collapsed without a touchscreen
-            appBar.setExpanded(false);
-        }
 
         mRefreshAnimation = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f,
                 Animation.RELATIVE_TO_SELF, 0.5f);
@@ -184,33 +172,6 @@ public class UpdatesActivity extends UpdatesListActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_refresh: {
-                downloadUpdatesList(true);
-                return true;
-            }
-            case R.id.menu_preferences: {
-                showPreferencesDialog();
-                return true;
-            }
-            case R.id.menu_show_changelog: {
-                Intent openUrl = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse(Utils.getChangelogURL(this)));
-                startActivity(openUrl);
-                return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
@@ -220,7 +181,7 @@ public class UpdatesActivity extends UpdatesListActivity {
 
         @Override
         public void onServiceConnected(ComponentName className,
-                IBinder service) {
+                                       IBinder service) {
             UpdaterService.LocalBinder binder = (UpdaterService.LocalBinder) service;
             mUpdaterService = binder.getService();
             mAdapter.setUpdaterController(mUpdaterService.getUpdaterController());
@@ -235,18 +196,33 @@ public class UpdatesActivity extends UpdatesListActivity {
         }
     };
 
+    public String deviceC, miscC, SEc, settingsC, systemC;
+
     private void loadUpdatesList(File jsonFile, boolean manualRefresh)
             throws IOException, JSONException {
         Log.d(TAG, "Adding remote updates");
         UpdaterController controller = mUpdaterService.getUpdaterController();
         boolean newUpdates = false;
 
+        mChangelogSheet.setChangelogLayout(new ChangelogLayout(this));
+
         List<UpdateInfo> updates = Utils.parseJson(jsonFile, true);
         List<String> updatesOnline = new ArrayList<>();
         for (UpdateInfo update : updates) {
             newUpdates |= controller.addUpdate(update);
             updatesOnline.add(update.getDownloadId());
+            deviceC = update.getDeviceChangelog();
+            miscC = update.getMiscChangelog();
+            SEc = update.getSecurityPatchChangelog();
+            settingsC = update.getSettingsChangelog();
+            systemC = update.getSystemChangelog();
+            mChangelogSheet.setDevice(update.getDeviceChangelog());
+            mChangelogSheet.setMisc(update.getMiscChangelog());
+            mChangelogSheet.setSecurityPatch(update.getSecurityPatchChangelog());
+            mChangelogSheet.setSettings(update.getSettingsChangelog());
+            mChangelogSheet.setSystem(update.getSystemChangelog());
         }
+
         controller.setUpdatesAvailableOnline(updatesOnline, true);
 
         if (manualRefresh) {
@@ -326,7 +302,7 @@ public class UpdatesActivity extends UpdatesListActivity {
 
             @Override
             public void onResponse(int statusCode, String url,
-                    DownloadClient.Headers headers) {
+                                   DownloadClient.Headers headers) {
             }
 
             @Override
@@ -363,8 +339,11 @@ public class UpdatesActivity extends UpdatesListActivity {
         String lastCheckString = getString(R.string.header_last_updates_check,
                 StringGenerator.getDateLocalized(this, DateFormat.LONG, lastCheck),
                 StringGenerator.getTimeLocalized(this, lastCheck));
-        TextView headerLastCheck = (TextView) findViewById(R.id.header_last_check);
-        headerLastCheck.setText(lastCheckString);
+        mChangelogSheet.initDetailsText(new TextView(this));
+        mChangelogSheet.setDetails(
+                getString(R.string.header_android_version, Build.VERSION.RELEASE),
+                StringGenerator.getDateLocalizedUTC(this, DateFormat.LONG, BuildInfoUtils.getBuildDateTimestamp()),
+                lastCheckString);
     }
 
     private void handleDownloadStatusChange(String downloadId) {
@@ -406,47 +385,8 @@ public class UpdatesActivity extends UpdatesListActivity {
     }
 
     private void showPreferencesDialog() {
-        View view = LayoutInflater.from(this).inflate(R.layout.preferences_dialog, null);
-        Switch autoCheck = view.findViewById(R.id.preferences_auto_updates_check);
-        Switch autoDelete = view.findViewById(R.id.preferences_auto_delete_updates);
-        Switch dataWarning = view.findViewById(R.id.preferences_mobile_data_warning);
-        Switch abPerfMode = view.findViewById(R.id.preferences_ab_perf_mode);
-
-        if (!Utils.isABDevice()) {
-            abPerfMode.setVisibility(View.GONE);
-        }
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        autoCheck.setChecked(prefs.getBoolean(Constants.PREF_AUTO_UPDATES_CHECK, true));
-        autoDelete.setChecked(prefs.getBoolean(Constants.PREF_AUTO_DELETE_UPDATES, false));
-        dataWarning.setChecked(prefs.getBoolean(Constants.PREF_MOBILE_DATA_WARNING, true));
-        abPerfMode.setChecked(prefs.getBoolean(Constants.PREF_AB_PERF_MODE, false));
-
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.menu_preferences)
-                .setView(view)
-                .setOnDismissListener(dialogInterface -> {
-                    prefs.edit()
-                            .putBoolean(Constants.PREF_AUTO_UPDATES_CHECK,
-                                    autoCheck.isChecked())
-                            .putBoolean(Constants.PREF_AUTO_DELETE_UPDATES,
-                                    autoDelete.isChecked())
-                            .putBoolean(Constants.PREF_MOBILE_DATA_WARNING,
-                                    dataWarning.isChecked())
-                            .putBoolean(Constants.PREF_AB_PERF_MODE,
-                                    abPerfMode.isChecked())
-                            .apply();
-
-                    if (autoCheck.isChecked()) {
-                        UpdatesCheckReceiver.scheduleRepeatingUpdatesCheck(this);
-                    } else {
-                        UpdatesCheckReceiver.cancelRepeatingUpdatesCheck(this);
-                        UpdatesCheckReceiver.cancelUpdatesCheck(this);
-                    }
-
-                    boolean enableABPerfMode = abPerfMode.isChecked();
-                    mUpdaterService.getUpdaterController().setPerformanceMode(enableABPerfMode);
-                })
-                .show();
+        PreferencesSheet rs = new PreferencesSheet();
+        rs.setUpdaterService(mUpdaterService);
+        rs.show(getSupportFragmentManager(), rs.getTag());
     }
 }

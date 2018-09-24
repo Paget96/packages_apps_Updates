@@ -30,4 +30,14 @@ public interface UpdateBaseInfo {
     String getDownloadUrl();
 
     long getFileSize();
+
+    String getSystemChangelog();
+
+    String getSettingsChangelog();
+
+    String getDeviceChangelog();
+
+    String getMiscChangelog();
+
+    String getSecurityPatchChangelog();
 }
