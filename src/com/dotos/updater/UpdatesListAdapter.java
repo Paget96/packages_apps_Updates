@@ -27,6 +27,7 @@ import android.os.PowerManager;
 import android.preference.PreferenceManager;
 
 import com.dotos.updater.ui.ChangelogLayout;
+import com.dotos.updater.ui.RoundedDialog;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ContextThemeWrapper;
@@ -447,16 +448,25 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
         };
     }
 
-    private AlertDialog.Builder getInstallDialog(final String downloadId) {
+    private RoundedDialog getInstallDialog(final String downloadId) {
         if (!isBatteryLevelOk()) {
+            View view = View.inflate(mActivity, R.layout.base_dialog, null);
+            RoundedDialog dialog = new RoundedDialog(mActivity, R.style.Theme_RoundedDialog);
+            dialog.setContentView(view);
+            TextView title = view.findViewById(R.id.title);
+            TextView text = view.findViewById(R.id.text);
+            Button positive = view.findViewById(R.id.dialog_postive);
+            Button negative = view.findViewById(R.id.dialog_negative);
             Resources resources = mActivity.getResources();
             String message = resources.getString(R.string.dialog_battery_low_message_pct,
                     resources.getInteger(R.integer.battery_ok_percentage_discharging),
                     resources.getInteger(R.integer.battery_ok_percentage_charging));
-            return new AlertDialog.Builder(mActivity)
-                    .setTitle(R.string.dialog_battery_low_title)
-                    .setMessage(message)
-                    .setPositiveButton(android.R.string.ok, null);
+            text.setText(message);
+            title.setText(R.string.dialog_battery_low_title);
+            positive.setVisibility(View.GONE);
+            negative.setText(android.R.string.cancel);
+            negative.setOnClickListener(v -> dialog.cancel());
+            return dialog;
         }
         UpdateInfo update = mUpdaterController.getUpdate(downloadId);
         int resId;
@@ -475,25 +485,43 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
                 DateFormat.MEDIUM, update.getTimestamp());
         String buildInfoText = mActivity.getString(R.string.list_build_version_date,
                 BuildInfoUtils.getBuildVersion(), buildDate);
-        return new AlertDialog.Builder(mActivity)
-                .setTitle(R.string.apply_update_dialog_title)
-                .setMessage(mActivity.getString(resId, buildInfoText,
-                        mActivity.getString(android.R.string.ok)))
-                .setPositiveButton(android.R.string.ok,
-                        (dialog, which) -> Utils.triggerUpdate(mActivity, downloadId))
-                .setNegativeButton(android.R.string.cancel, null);
+        View view = View.inflate(mActivity, R.layout.base_dialog, null);
+        RoundedDialog dialog = new RoundedDialog(mActivity, R.style.Theme_RoundedDialog);
+        dialog.setContentView(view);
+        TextView title = view.findViewById(R.id.title);
+        TextView text = view.findViewById(R.id.text);
+        Button positive = view.findViewById(R.id.dialog_postive);
+        Button negative = view.findViewById(R.id.dialog_negative);
+        text.setText(mActivity.getString(resId, buildInfoText,
+                mActivity.getString(android.R.string.ok)));
+        title.setText(R.string.apply_update_dialog_title);
+        positive.setVisibility(View.VISIBLE);
+        positive.setText(android.R.string.ok);
+        positive.setOnClickListener(v -> Utils.triggerUpdate(mActivity, downloadId));
+        negative.setText(android.R.string.cancel);
+        negative.setOnClickListener(v -> dialog.cancel());
+
+        return dialog;
     }
 
-    private AlertDialog.Builder getCancelInstallationDialog() {
-        return new AlertDialog.Builder(mActivity)
-                .setMessage(R.string.cancel_installation_dialog_message)
-                .setPositiveButton(android.R.string.ok,
-                        (dialog, which) -> {
-                            Intent intent = new Intent(mActivity, UpdaterService.class);
-                            intent.setAction(UpdaterService.ACTION_INSTALL_STOP);
-                            mActivity.startService(intent);
-                        })
-                .setNegativeButton(android.R.string.cancel, null);
+    private RoundedDialog getCancelInstallationDialog() {
+        View view = View.inflate(mActivity, R.layout.base_dialog, null);
+        RoundedDialog dialog = new RoundedDialog(mActivity, R.style.Theme_RoundedDialog);
+        dialog.setContentView(view);
+        TextView title = view.findViewById(R.id.title);
+        title.setVisibility(View.GONE);
+        TextView text = view.findViewById(R.id.text);
+        Button positive = view.findViewById(R.id.dialog_postive);
+        Button negative = view.findViewById(R.id.dialog_negative);
+        text.setText(R.string.cancel_installation_dialog_message);
+        negative.setText(android.R.string.cancel);
+        negative.setOnClickListener(v -> dialog.cancel());
+        positive.setOnClickListener(v -> {
+            Intent intent = new Intent(mActivity, UpdaterService.class);
+            intent.setAction(UpdaterService.ACTION_INSTALL_STOP);
+            mActivity.startService(intent);
+        });
+        return dialog;
     }
 
     @SuppressLint("RestrictedApi")
