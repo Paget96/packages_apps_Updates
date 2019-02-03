@@ -8,14 +8,14 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
 LOCAL_USE_AAPT2 := true
 
-LOCAL_STATIC_ANDROID_LIBRARIES := \
-    com-google-android-material-material \
-    androidx-transition-transition \
-    android-support-v4 \
-    android-support-v7-appcompat \
-    android-support-v7-cardview \
-    android-support-v7-preference \
-    android-support-v7-recyclerview
+LOCAL_STATIC_ANDROID_LIBRARIES += androidx.recyclerview_recyclerview
+LOCAL_STATIC_ANDROID_LIBRARIES += androidx.cardview_cardview
+LOCAL_STATIC_ANDROID_LIBRARIES += androidx.preference_preference
+LOCAL_STATIC_ANDROID_LIBRARIES += androidx.appcompat_appcompat
+LOCAL_STATIC_ANDROID_LIBRARIES += androidx.annotation_annotation
+LOCAL_STATIC_ANDROID_LIBRARIES += com.google.android.material_material
+
+LOCAL_STATIC_JAVA_LIBRARIES += guava
 
 LOCAL_RESOURCE_DIR := \
     $(LOCAL_PATH)/res
