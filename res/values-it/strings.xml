@@ -48,7 +48,12 @@
     <string name="preparing_ota_first_boot">Preparazione per il primo avvio</string>
     <string name="dialog_prepare_zip_message">Preparazione aggiornamento preliminare</string>
     <string name="dialog_battery_low_title">Batteria bassa</string>
-    <string name="dialog_battery_low_message_pct">Il livello della vatteria è troppo basso, per continuare hai bisogno di almeno <xliff:g id="percent_discharging">%1$d</xliff:g>%% di batteria, <xliff:g id="percent_charging">%2$d</xliff:g>%% se in carica.</string>
+    <string name="dialog_battery_low_message_pct">        Il livello della batteria è troppo basso, hai bisogno almeno
+        <xliff:g id="percent_discharging">%1$d</xliff:g>
+        %% della batteria per continuare,
+        <xliff:g id="percent_charging">%2$d</xliff:g>
+        %% se in carica.
+    </string>
     <string name="reboot">Riavvio</string>
     <string name="menu_refresh">Aggiorna</string>
     <string name="menu_preferences">Impostazioni</string>
@@ -66,13 +71,38 @@
     <string name="snack_download_verification_failed">Verifica dell\'aggiornamento fallita.</string>
     <string name="snack_download_verified">Scaricamento completato.</string>
     <string name="snack_update_not_installable">Questo aggiornamento non può essere installato sopra la versione corrente.</string>
-    <string name="header_title_text">droid in tempo</string>
-    <string name="header_android_version">Android <xliff:g id="version" example="9.0">%1$s</xliff:g></string>
-    <string name="header_last_updates_check">Ultima verifica: <xliff:g id="date" example="1 Gennaio 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>)</string>
-    <string name="list_build_version">DotOS<xliff:g id="version" example="dot-pie">%1$s</xliff:g></string>
-    <string name="list_build_version_date">DotOS <xliff:g id="version" example="dot-pie">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g></string>
-    <string name="list_download_progress_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> di <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> • <xliff:g id="percentage" example="56">%3$s</xliff:g></string>
-    <string name="list_download_progress_eta_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> di <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>) • <xliff:g id="percentage" example="56">%4$s</xliff:g></string>
+    <string name="header_title_text">Droide in tempo\n</string>
+    <string name="header_android_version">        Android
+        <xliff:g id="version" example="9.0">%1$s</xliff:g>
+    </string>
+    <string name="header_last_updates_check">        Ultimo controllo:
+        <xliff:g id="date" example="1 January 1970">%1$s</xliff:g>
+        (
+        <xliff:g id="time" example="01:23">%2$s</xliff:g>
+        )
+    </string>
+    <string name="list_build_version">        DotOS
+        <xliff:g id="version" example="dot-pie">%1$s</xliff:g>
+    </string>
+    <string name="list_build_version_date">        DotOS
+        <xliff:g id="version" example="dot-pie">%1$s</xliff:g>
+        -
+        <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g>
+    </string>
+    <string name="list_download_progress_new">        <xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g>
+        di
+        <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g>
+        •
+        <xliff:g id="percentage" example="56">%3$s</xliff:g>
+    </string>
+    <string name="list_download_progress_eta_new">        <xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g>
+        di
+        <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g>
+        (
+        <xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>
+        ) •
+        <xliff:g id="percentage" example="56">%4$s</xliff:g>
+    </string>
     <string name="list_verifying_update">Verifica aggiornamento</string>
     <string name="list_no_updates">Nessun nuovo aggiornamento trovato</string>
     <string name="list_no_updates_summary">Use il pulsante Aggiorna per cercare nuovi aggiornamenti manualmente.</string>
@@ -86,8 +116,18 @@
     <string name="confirm_delete_dialog_title">Elimina file</string>
     <string name="confirm_delete_dialog_message">Cancellare il file di aggiornamento selezionato?</string>
     <string name="apply_update_dialog_title">Applica l\'aggiornamento</string>
-    <string name="apply_update_dialog_message">Si sta per aggiornare a <xliff:g id="update_name">%1$s</xliff:g>.\n\nSe si preme <xliff:g id="ok">%2$s</xliff:g>, il dispositivo verrà riavviato in modalità recovery per installare l\'aggiornamento automaticamente.\n\nNota: Questa funzione richiede una recovery compatibile, in caso contrario si dovrà procedere all\'installazione manualmente.</string>
-    <string name="apply_update_dialog_message_ab">Si sta per aggiornare a <xliff:g id="update_name">%1$s</xliff:g>.\n\nPremendo <xliff:g id="ok">%2$s</xliff:g>, il dispositivo inizierà l\'installazione in background.\n\nUna volta completato verrà richiesto di riavviare il dispositivo.</string>
+    <string name="apply_update_dialog_message">        Stai per aggiornare a
+        <xliff:g id="update_name">%1$s</xliff:g>
+        .\n\nSe premi
+        <xliff:g id="ok">%2$s</xliff:g>
+        , il dispositivo si riavvierà in modalità di recupero per installare l\'aggiornamento.\n\nNota: Questa funzionalità richiede una ripresa compatibile o aggiornamenti dovranno essere installati manualmente.
+    </string>
+    <string name="apply_update_dialog_message_ab">        Stai per aggiornare a
+        <xliff:g id="update_name">%1$s</xliff:g>
+        .\n\nPremendo
+        <xliff:g id="ok">%2$s</xliff:g>
+        , il dispositivo inizierà l\'installazione in background.\n\nuna volta completato, ti verrà richiesto di riavviare.
+    </string>
     <string name="cancel_installation_dialog_message">Annullare l\'installazione?</string>
     <string name="label_download_url">Download URL</string>
     <string name="toast_download_url_copied">URL copiato</string>
@@ -112,7 +152,10 @@
     <string name="checkbox_mobile_data_warning">Non mostrare di nuovo</string>
     <string name="menu_mobile_data_warning">Avviso utilizzo dati mobili</string>
     <string name="blocked_update_dialog_title">Aggiornamento bloccato</string>
-    <string name="blocked_update_dialog_message">Questo aggiornamento non può essere installato usando l\'app updater.  Si prega di leggere <xliff:g id="info_url">%1$s</xliff:g> per ulteriori informazioni.</string>
+    <string name="blocked_update_dialog_message">        Questo aggiornamento non può essere installato utilizzando l\'app updater. Si prega di leggere
+        <xliff:g id="info_url">%1$s</xliff:g>
+        per ulteriori informazioni.
+    </string>
     <string name="export_channel_title">Completamento dell\'esportazione</string>
     <string name="new_updates_channel_title">Nuovi aggiornamenti</string>
     <string name="ongoing_channel_title">Scaricamento in corso</string>

@@ -66,13 +66,13 @@
     <string name="snack_download_verification_failed">更新の検証に失敗しました</string>
     <string name="snack_download_verified">ダウンロード完了</string>
     <string name="snack_update_not_installable">この更新は現在のビルドに上書きインストールできません</string>
-    <string name="header_title_text">droid on time</string>
-    <string name="header_android_version">Android <xliff:g id="version" example="9.0">%1$s</xliff:g></string>
-    <string name="header_last_updates_check">最終確認: <xliff:g id="date" example="1 January 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>)</string>
-    <string name="list_build_version">dotOS <xliff:g id="version" example="dot-pie">%1$s</xliff:g></string>
-    <string name="list_build_version_date">dotOS <xliff:g id="version" example="dot-pie">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g></string>
-    <string name="list_download_progress_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> / <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> • <xliff:g id="percentage" example="56">%3$s</xliff:g></string>
-    <string name="list_download_progress_eta_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> / <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>) • <xliff:g id="percentage" example="56">%4$s</xliff:g></string>
+    <string name="header_title_text">Droid on time\n</string>
+    <string name="header_android_version">Android <xliff:g id="version" example="9.0">%1$s</xliff:g>    </string>
+    <string name="header_last_updates_check">最終確認: <xliff:g id="date" example="1 January 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>    </string>
+    <string name="list_build_version">dotOS <xliff:g id="version" example="dot-pie">%1$s</xliff:g>    </string>
+    <string name="list_build_version_date">dotOS <xliff:g id="version" example="dot-pie">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g>    </string>
+    <string name="list_download_progress_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> / <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> • <xliff:g id="percentage" example="56">%3$s</xliff:g>    </string>
+    <string name="list_download_progress_eta_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> / <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>) • <xliff:g id="percentage" example="56">%4$s</xliff:g>    </string>
     <string name="list_verifying_update">更新を検証中</string>
     <string name="list_no_updates">新しい更新はありません</string>
     <string name="list_no_updates_summary">新しい更新を手動で確認するには、更新ボタンを押して下さい。</string>
@@ -109,7 +109,7 @@
     <string name="checkbox_mobile_data_warning">今後表示しない</string>
     <string name="menu_mobile_data_warning">モバイルデータの警告</string>
     <string name="blocked_update_dialog_title">更新をブロックしました</string>
-    <string name="blocked_update_dialog_message">この更新はアプリからインストールできません。詳しくは <xliff:g id="info_url">%1$s</xliff:g> をご覧下さいい。</string>
+    <string name="blocked_update_dialog_message">このアップデートはアプリからインストールできません。詳しくは <xliff:g id="info_url">%1$s</xliff:g> をご覧ください。</string>
     <string name="export_channel_title">エクスポート完了</string>
     <string name="new_updates_channel_title">新しい更新</string>
     <string name="ongoing_channel_title">ダウンロード中</string>

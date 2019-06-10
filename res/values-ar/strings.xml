@@ -48,7 +48,12 @@
     <string name="preparing_ota_first_boot">جارٍ الإعداد للتشغيل الأول</string>
     <string name="dialog_prepare_zip_message">التجهيز للتحديث الأولي</string>
     <string name="dialog_battery_low_title">البطارية منخفضة</string>
-    <string name="dialog_battery_low_message_pct">مستوى شحن البطارية منخفض للغاية؛ وتحتاج على الأقل <xliff:g id="percent_discharging">%1$d</xliff:g>%% من البطارية للمتابعة، <xliff:g id="percent_charging">%2$d</xliff:g>%% في حالة الشحن.</string>
+    <string name="dialog_battery_low_message_pct">        The battery level is too low, you need at least
+        <xliff:g id="percent_discharging">%1$d</xliff:g>
+        %% of the battery to continue,
+        <xliff:g id="percent_charging">%2$d</xliff:g>
+        %% if charging.
+    </string>
     <string name="reboot">إعادة التشغيل</string>
     <string name="menu_refresh">تحديث</string>
     <string name="menu_preferences">التفضيلات</string>
@@ -66,13 +71,38 @@
     <string name="snack_download_verification_failed">فشل التحقق من التحديث.</string>
     <string name="snack_download_verified">اكتمل التنزيل.</string>
     <string name="snack_update_not_installable">لا يمكن تثبيت هذا التحديث على الاصدار الحالي.</string>
-    <string name="header_title_text">droid on time</string>
-    <string name="header_android_version">Android <xliff:g id="version" example="9.0">%1$s</xliff:g></string>
-    <string name="header_last_updates_check">Last checked: <xliff:g id="date" example="1 January 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>)</string>
-    <string name="list_build_version">DotOS <xliff:g id="version" example="dot-pie">%1$s</xliff:g></string>
-    <string name="list_build_version_date">DotOS <xliff:g id="version" example="dot-pie">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g></string>
-    <string name="list_download_progress_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> • <xliff:g id="percentage" example="56">%3$s</xliff:g></string>
-    <string name="list_download_progress_eta_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>) • <xliff:g id="percentage" example="56">%4$s</xliff:g></string>
+    <string name="header_title_text">Droid on time\n</string>
+    <string name="header_android_version">        Android
+        <xliff:g id="version" example="9.0">%1$s</xliff:g>
+    </string>
+    <string name="header_last_updates_check">        Last checked:
+        <xliff:g id="date" example="1 January 1970">%1$s</xliff:g>
+        (
+        <xliff:g id="time" example="01:23">%2$s</xliff:g>
+        )
+    </string>
+    <string name="list_build_version">        DotOS
+        <xliff:g id="version" example="dot-pie">%1$s</xliff:g>
+    </string>
+    <string name="list_build_version_date">        DotOS
+        <xliff:g id="version" example="dot-pie">%1$s</xliff:g>
+        -
+        <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g>
+    </string>
+    <string name="list_download_progress_new">        <xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g>
+        of
+        <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g>
+        •
+        <xliff:g id="percentage" example="56">%3$s</xliff:g>
+    </string>
+    <string name="list_download_progress_eta_new">        <xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g>
+        of
+        <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g>
+        (
+        <xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>
+        ) •
+        <xliff:g id="percentage" example="56">%4$s</xliff:g>
+    </string>
     <string name="list_verifying_update">جارٍ التحقق من التحديث</string>
     <string name="list_no_updates">لا توجد تحديثات جديدة</string>
     <string name="list_no_updates_summary">للتحقق من التحديثات يدوياً إضغط على زر التحديث.</string>
@@ -86,8 +116,18 @@
     <string name="confirm_delete_dialog_title">حذف الملف</string>
     <string name="confirm_delete_dialog_message">حذف ملف التحديث المحدد؟</string>
     <string name="apply_update_dialog_title">تطبيق التحديث</string>
-    <string name="apply_update_dialog_message">أنت على وشك الترقية إلى <xliff:g id="update_name">%1$s</xliff:g>. \n\n إذا ضغطت <xliff:g id="ok">%2$s</xliff:g> سيعيد الهاتف تشغيل نفسه في وضع الإسترداد لتثبيت التحديث.\n\n ملاحظة: هذه الميزة تتطلب \"مُستَرِد\" مُتوافق أو سيجب عليك تثبيت التحديثات يدوياً.</string>
-    <string name="apply_update_dialog_message_ab">أنت على وشك الترقية إلى <xliff:g id="update_name">%1$s</xliff:g>.\n\nإذا ضغطت <xliff:g id="ok">%2$s</xliff:g>, سيبدأ الهاتف في تثبيت التحديث في الخلفية.\n\nعند الإنتهاء من التثبيت، سيطلب منك إعادة تشغيل هاتفك.</string>
+    <string name="apply_update_dialog_message">        You are about to upgrade to
+        <xliff:g id="update_name">%1$s</xliff:g>
+        .\n\nIf you press
+        <xliff:g id="ok">%2$s</xliff:g>
+        , the device will restart itself in recovery mode to install the update.\n\nNote: This feature requires a compatible Recovery or updates will need to be installed manually.
+    </string>
+    <string name="apply_update_dialog_message_ab">        You are about to upgrade to
+        <xliff:g id="update_name">%1$s</xliff:g>
+        .\n\nIf you press
+        <xliff:g id="ok">%2$s</xliff:g>
+        , the device will begin installing in the background.\n\nOnce completed, you will be prompted to reboot.
+    </string>
     <string name="cancel_installation_dialog_message">إلغاء التثبيت؟</string>
     <string name="label_download_url">عنوان التنزيل</string>
     <string name="toast_download_url_copied">تم نسخ الرابط</string>
@@ -96,35 +136,68 @@
     <string name="notification_export_fail">خطأ في التصدير</string>
     <string name="toast_already_exporting">جارٍ تصدير التحديث بالفعل</string>
     <plurals name="eta_seconds">
-        <item quantity="zero"><xliff:g id="count">%d</xliff:g> seconds left</item>
+        <item quantity="zero">            <xliff:g id="count">%d</xliff:g>
+            seconds left
+        </item>
         <item quantity="one">1 second left</item>
-        <item quantity="two"><xliff:g id="count">%d</xliff:g> seconds left</item>
-        <item quantity="few"><xliff:g id="count">%d</xliff:g> seconds left</item>
-        <item quantity="many"><xliff:g id="count">%d</xliff:g> seconds left</item>
-        <item quantity="other"><xliff:g id="count">%d</xliff:g> seconds left</item>
+        <item quantity="two">            <xliff:g id="count">%d</xliff:g>
+            seconds left
+        </item>
+        <item quantity="few">            <xliff:g id="count">%d</xliff:g>
+            seconds left
+        </item>
+        <item quantity="many">            <xliff:g id="count">%d</xliff:g>
+            seconds left
+        </item>
+        <item quantity="other">            <xliff:g id="count">%d</xliff:g>
+            seconds left
+        </item>
     </plurals>
     <plurals name="eta_minutes">
-        <item quantity="zero"><xliff:g id="count">%d</xliff:g> minutes left</item>
+        <item quantity="zero">            <xliff:g id="count">%d</xliff:g>
+            minutes left
+        </item>
         <item quantity="one">1 minute left</item>
-        <item quantity="two"><xliff:g id="count">%d</xliff:g> minutes left</item>
-        <item quantity="few"><xliff:g id="count">%d</xliff:g> minutes left</item>
-        <item quantity="many"><xliff:g id="count">%d</xliff:g> minutes left</item>
-        <item quantity="other"><xliff:g id="count">%d</xliff:g> minutes left</item>
+        <item quantity="two">            <xliff:g id="count">%d</xliff:g>
+            minutes left
+        </item>
+        <item quantity="few">            <xliff:g id="count">%d</xliff:g>
+            minutes left
+        </item>
+        <item quantity="many">            <xliff:g id="count">%d</xliff:g>
+            minutes left
+        </item>
+        <item quantity="other">            <xliff:g id="count">%d</xliff:g>
+            minutes left
+        </item>
     </plurals>
     <plurals name="eta_hours">
-        <item quantity="zero"><xliff:g id="count">%d</xliff:g> hours left</item>
+        <item quantity="zero">            <xliff:g id="count">%d</xliff:g>
+            hours left
+        </item>
         <item quantity="one">1 hour left</item>
-        <item quantity="two"><xliff:g id="count">%d</xliff:g> hours left</item>
-        <item quantity="few"><xliff:g id="count">%d</xliff:g> hours left</item>
-        <item quantity="many"><xliff:g id="count">%d</xliff:g> hours left</item>
-        <item quantity="other"><xliff:g id="count">%d</xliff:g> hours left</item>
+        <item quantity="two">            <xliff:g id="count">%d</xliff:g>
+            hours left
+        </item>
+        <item quantity="few">            <xliff:g id="count">%d</xliff:g>
+            hours left
+        </item>
+        <item quantity="many">            <xliff:g id="count">%d</xliff:g>
+            hours left
+        </item>
+        <item quantity="other">            <xliff:g id="count">%d</xliff:g>
+            hours left
+        </item>
     </plurals>
     <string name="update_on_mobile_data_title">تحذير</string>
     <string name="update_on_mobile_data_message">أنت على وشك أن تقوم بتنزيل حزمة تحديث باستخدام بيانات الجوال مما سيتسبب في استخدام عالي للبيانات. هل تريد المتابعة؟</string>
     <string name="checkbox_mobile_data_warning">لا تظهر مرة أخرى</string>
     <string name="menu_mobile_data_warning">تحذير بيانات الجوال</string>
     <string name="blocked_update_dialog_title">التحديث محظور</string>
-    <string name="blocked_update_dialog_message">لا يمكن تثبيت التحديث باستخدام تطبيق المُحدث. برجاء قراءة <xliff:g id="info_url">%1$s </xliff:g> للحصول على مزيد من المعلومات.</string>
+    <string name="blocked_update_dialog_message">        This update cannot be installed using the updater app.  Please read
+        <xliff:g id="info_url">%1$s</xliff:g>
+        for more information.
+    </string>
     <string name="export_channel_title">Export completion</string>
     <string name="new_updates_channel_title">توجد تحديثات جديدة</string>
     <string name="ongoing_channel_title">التنزيلات الجارية</string>

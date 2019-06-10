@@ -48,8 +48,12 @@
     <string name="preparing_ota_first_boot">Felkészülés az első indításra</string>
     <string name="dialog_prepare_zip_message">A frissítés előzetes előkészítése</string>
     <string name="dialog_battery_low_title">Alacsony akkufeszültség</string>
-    <string name="dialog_battery_low_message_pct">Az akkumulátortöltöttség túl alacsony, szüksége van legalább <xliff:g id="percent_discharging">%1$d</xliff:g>%% töltöttségre a folytatáshoz,
-illetve, ha éppen tölt, akkor még <xliff:g id="percent_charging">%2$d</xliff:g>%% töltés szükséges.</string>
+    <string name="dialog_battery_low_message_pct">        Az akkumulátortöltöttség túl alacsony,
+        szüksége van legalább
+         <xliff:g id="percent_discharging">%1$d</xliff:g> %% töltöttségre a folytatáshoz,
+        illetve, ha éppen tölt, akkor még
+        <xliff:g id="percent_charging">%2$d</xliff:g> %% töltés szükséges.
+    </string>
     <string name="reboot">Újraindítás</string>
     <string name="menu_refresh">Frissítés</string>
     <string name="menu_preferences">Tulajdonságok</string>
@@ -67,13 +71,38 @@ illetve, ha éppen tölt, akkor még <xliff:g id="percent_charging">%2$d</xliff:
     <string name="snack_download_verification_failed">A frissítés ellenőrzése meghiúsult.</string>
     <string name="snack_download_verified">A letöltés befejeződött.</string>
     <string name="snack_update_not_installable">Ez a frissítés nem telepíthető a jelenlegi verzióra.</string>
-    <string name="header_title_text">droid on time</string>
-    <string name="header_android_version">Android <xliff:g id="version" example="9.0">%1$s</xliff:g></string>
-    <string name="header_last_updates_check">Legutóbb ellenőrizve: <xliff:g id="date" example="1 January 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>)</string>
-    <string name="list_build_version">DotOS <xliff:g id="version" example="dot-pie">%1$s</xliff:g></string>
-    <string name="list_build_version_date">DotOS <xliff:g id="version" example="dot-pie">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g></string>
-    <string name="list_download_progress_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> a <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g>-ból - <xliff:g id="percentage" example="56">%3$s</xliff:g></string>
-    <string name="list_download_progress_eta_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> a <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g>-ból (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>) • <xliff:g id="percentage" example="56">%4$s</xliff:g></string>
+    <string name="header_title_text">Droid on time\n</string>
+    <string name="header_android_version">        Android
+        <xliff:g id="verzió" example="9.0">%1$s</xliff:g>
+    </string>
+    <string name="header_last_updates_check">        Legutóbb ellenőrizve:
+        <xliff:g id="date" example="1 January 1970">%1$s</xliff:g>
+        (
+        <xliff:g id="time" example="01:23">%2$s</xliff:g>
+        )
+       </string>
+    <string name="list_build_version">        DotOS
+        <xliff:g id="verzió" example="dot-pie">%1$s</xliff:g>
+    </string>
+    <string name="list_build_version_date">        DotOS
+        <xliff:g id="verzió" example="dot-pie">%1$s</xliff:g>
+        -
+        <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g>
+    </string>
+    <string name="list_download_progress_new">        <xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g>
+        /
+        <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g>
+        •
+        <xliff:g id="percentage" example="56">%3$s</xliff:g>
+    </string>
+    <string name="list_download_progress_eta_new">        <xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g>
+        /
+        <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g>
+        (
+        <xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>
+        ) •
+        <xliff:g id="percentage" example="56">%4$s</xliff:g>
+    </string>
     <string name="list_verifying_update">Frissítésellenőrzés</string>
     <string name="list_no_updates">Nem található új frissítés</string>
     <string name="list_no_updates_summary">A frissítések manuális ellenőrzéséhez, használja a Frissítés gombot.</string>
@@ -87,8 +116,18 @@ illetve, ha éppen tölt, akkor még <xliff:g id="percent_charging">%2$d</xliff:
     <string name="confirm_delete_dialog_title">Fájltörlés</string>
     <string name="confirm_delete_dialog_message">Törölni szeretné a kiválasztott frissítőfájlt?</string>
     <string name="apply_update_dialog_title">A frissítés telepítése</string>
-    <string name="apply_update_dialog_message">A következő frissítésre készül: <xliff:g id="update_name">%1$s</xliff:g>.\n\nHa megnyomja ezt a gombot: <xliff:g id="ok">%2$s</xliff:g>, a készülék újraindul recovery módban a frissítés telepítéséhez.\n\nMegjegyzés: Ehhez a funkcióhoz kompatibilis recovery-re van szükség, ennek hiányában manuálisan kell a telepíteni a frissítéseket.</string>
-    <string name="apply_update_dialog_message_ab">A következő frissítésre készül: <xliff:g id="update_name">%1$s</xliff:g>.\n\nHa megnyomja ezt a gombot: <xliff:g id="ok">%2$s</xliff:g>, a készülék elkezdi a telepítést a háttérben.\n\nAmint kész, újraindításra lesz szükség.</string>
+    <string name="apply_update_dialog_message">        A következő frissítésre készül:
+        <xliff:g id="update_name">%1$s</xliff:g>
+        .\n\nHa megnyomja ezt a gombot:
+        <xliff:g id="ok">%2$s</xliff:g>
+        , a készülék újraindul recovery módban a frissítés telepítéséhez.\n\nMegjegyzés: Ehhez a funkcióhoz kompatibilis recovery-re van szükség, ennek hiányában manuálisan kell a telepíteni a frissítéseket.
+    </string>
+    <string name="apply_update_dialog_message_ab">        A következő frissítésre készül:
+        <xliff:g id="update_name">%1$s</xliff:g>
+        .\n\nHa megnyomja ezt a gombot:
+        <xliff:g id="ok">%2$s</xliff:g>
+        , a készülék elkezdi a telepítést a háttérben.\n\nAmint kész, újraindításra lesz szükség.
+        </string>
     <string name="cancel_installation_dialog_message">Megszakítja a telepítést?</string>
     <string name="label_download_url">Az URL letöltése</string>
     <string name="toast_download_url_copied">Az URL másolva</string>
@@ -113,7 +152,10 @@ illetve, ha éppen tölt, akkor még <xliff:g id="percent_charging">%2$d</xliff:
     <string name="checkbox_mobile_data_warning">Ne jelenjen meg többet</string>
     <string name="menu_mobile_data_warning">Mobiladat-használati figyelmeztetés</string>
     <string name="blocked_update_dialog_title">A frissítés blokkolva</string>
-    <string name="blocked_update_dialog_message">Ez a frissítés nem telepíthető a Frissítés alkalmazással. További információért olvassa el a következőt: <xliff:g id="info_url">%1$s</xliff:g></string>
+    <string name="blocked_update_dialog_message">        Ez a frissítés nem telepíthető a Frissítés alkalmazással.
+        További információért olvassa el a következőt:
+        <xliff:g id="info_url">%1$s</xliff:g>.
+     </string>
     <string name="export_channel_title">Exportálás-véglegesítés</string>
     <string name="new_updates_channel_title">Új frissítések</string>
     <string name="ongoing_channel_title">Folyamatban lévő letöltések</string>

@@ -48,7 +48,12 @@
     <string name="preparing_ota_first_boot">Підготовка до першого завантаження</string>
     <string name="dialog_prepare_zip_message">Підготовка оновлення</string>
     <string name="dialog_battery_low_title">Низький заряд батареї</string>
-    <string name="dialog_battery_low_message_pct">Рівень заряду батареї занизький, для продовження необхідно хоча б <xliff:g id="percent_discharging">%1$d</xliff:g>%% заряду або <xliff:g id="percent_charging">%2$d</xliff:g>%% під час зарядки.</string>
+    <string name="dialog_battery_low_message_pct">        The battery level is too low, you need at least
+        <xliff:g id="percent_discharging">%1$d</xliff:g>
+        %% of the battery to continue,
+        <xliff:g id="percent_charging">%2$d</xliff:g>
+        %% if charging.
+    </string>
     <string name="reboot">Перезавантажити</string>
     <string name="menu_refresh">Оновити</string>
     <string name="menu_preferences">Особисті налаштування</string>
@@ -66,13 +71,38 @@
     <string name="snack_download_verification_failed">Помилка перевірки оновлення.</string>
     <string name="snack_download_verified">Завантаження завершено.</string>
     <string name="snack_update_not_installable">Це оновлення не можна інсталювати на поточну збірку.</string>
-    <string name="header_title_text">droid on time</string>
-    <string name="header_android_version">Android <xliff:g id="Version">%1$s</xliff:g></string>
-    <string name="header_last_updates_check">Остання перевірка: <xliff:g id="date" example="1 January 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>)</string>
-    <string name="list_build_version">DotOS <xliff:g id="version" example="dot-pie">%1$s</xliff:g></string>
-    <string name="list_build_version_date">DotOS <xliff:g id="version" example="dot-pie">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g></string>
-    <string name="list_download_progress_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> • <xliff:g id="percentage" example="56">%3$s</xliff:g></string>
-    <string name="list_download_progress_eta_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>) • <xliff:g id="percentage" example="56">%4$s</xliff:g></string>
+    <string name="header_title_text">Droid on time\n</string>
+    <string name="header_android_version">        Android
+        <xliff:g id="version" example="9.0">%1$s</xliff:g>
+    </string>
+    <string name="header_last_updates_check">        Last checked:
+        <xliff:g id="date" example="1 January 1970">%1$s</xliff:g>
+        (
+        <xliff:g id="time" example="01:23">%2$s</xliff:g>
+        )
+    </string>
+    <string name="list_build_version">        DotOS
+        <xliff:g id="version" example="dot-pie">%1$s</xliff:g>
+    </string>
+    <string name="list_build_version_date">        DotOS
+        <xliff:g id="version" example="dot-pie">%1$s</xliff:g>
+        -
+        <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g>
+    </string>
+    <string name="list_download_progress_new">        <xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g>
+        of
+        <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g>
+        •
+        <xliff:g id="percentage" example="56">%3$s</xliff:g>
+    </string>
+    <string name="list_download_progress_eta_new">        <xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g>
+        of
+        <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g>
+        (
+        <xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>
+        ) •
+        <xliff:g id="percentage" example="56">%4$s</xliff:g>
+    </string>
     <string name="list_verifying_update">Перевірка оновлення</string>
     <string name="list_no_updates">Оновлень не знайдено</string>
     <string name="list_no_updates_summary">Оновлень не знайдено. Щоб вручну перевірити наявність оновлень, натисніть кнопку Оновити.</string>
@@ -86,8 +116,18 @@
     <string name="confirm_delete_dialog_title">Видалити файл</string>
     <string name="confirm_delete_dialog_message">Видалити обраний файл оновлення?</string>
     <string name="apply_update_dialog_title">Застосувати оновлення</string>
-    <string name="apply_update_dialog_message">Ви збираєтесь оновитися до <xliff:g id="filename">%s</xliff:g>.\n\nКоли ви натиснете кнопку \"Оновити\", пристрій перезавантажиться в Recovery для встановлення оновлення.\n\nЗауважте, ця функція вимагає сумісний Recovery, інакше відновлення доведеться встановити вручну.</string>
-    <string name="apply_update_dialog_message_ab">Ви маєте намір перейти на <xliff:g id="update_name">%1$s</xliff:g>.\n\nЯкщо натиснути <xliff:g id="ok">-%2$s-</xliff:g>, пристрій розпочне установку у фоновому режимі.\n\nпісля завершення, вам буде запропоновано перезавантажити.</string>
+    <string name="apply_update_dialog_message">        You are about to upgrade to
+        <xliff:g id="update_name">%1$s</xliff:g>
+        .\n\nIf you press
+        <xliff:g id="ok">%2$s</xliff:g>
+        , the device will restart itself in recovery mode to install the update.\n\nNote: This feature requires a compatible Recovery or updates will need to be installed manually.
+    </string>
+    <string name="apply_update_dialog_message_ab">        You are about to upgrade to
+        <xliff:g id="update_name">%1$s</xliff:g>
+        .\n\nIf you press
+        <xliff:g id="ok">%2$s</xliff:g>
+        , the device will begin installing in the background.\n\nOnce completed, you will be prompted to reboot.
+    </string>
     <string name="cancel_installation_dialog_message">Скасувати встановлення?</string>
     <string name="label_download_url">Завантажити URL</string>
     <string name="toast_download_url_copied">Адресу скопійовано</string>
@@ -118,7 +158,10 @@
     <string name="checkbox_mobile_data_warning">Більше не показувати</string>
     <string name="menu_mobile_data_warning">Попередження про мобільні дані</string>
     <string name="blocked_update_dialog_title">Оновлення заблоковано</string>
-    <string name="blocked_update_dialog_message">Це оновлення не можна інсталювати за допомогою штатного оновлювача.  Будь ласка, прочитайте <xliff:g id="info_url">%1$s</xliff:g> для отримання додаткової інформації.</string>
+    <string name="blocked_update_dialog_message">        This update cannot be installed using the updater app.  Please read
+        <xliff:g id="info_url">%1$s</xliff:g>
+        for more information.
+    </string>
     <string name="export_channel_title">Експорт завершено</string>
     <string name="new_updates_channel_title">Свіже оновлення</string>
     <string name="ongoing_channel_title">Поточні завантаження</string>

@@ -48,7 +48,7 @@
     <string name="preparing_ota_first_boot">Ön yükleme için hazırlanıyor</string>
     <string name="dialog_prepare_zip_message">Güncelleme ön hazırlığı</string>
     <string name="dialog_battery_low_title">Düşük pil</string>
-    <string name="dialog_battery_low_message_pct">Pil seviyesi çok düşük, devam etmek için en az <xliff:g id="percent_discharging">%1$d</xliff:g>%% pil gereklidir, <xliff:g id="percent_charging">%2$d</xliff:g>%% şarj ediliyor.</string>
+    <string name="dialog_battery_low_message_pct">Pil seviyesi çok düşük, devam etmek için en az <xliff:g id="percent_discharging">%1$d</xliff:g>%% pil gereklidir, <xliff:g id="percent_charging">%2$d</xliff:g>%% şarj ediliyor.    </string>
     <string name="reboot">Yeniden başlat</string>
     <string name="menu_refresh">Yenile</string>
     <string name="menu_preferences">Tercihler</string>
@@ -66,13 +66,13 @@
     <string name="snack_download_verification_failed">Güncelleme doğrulaması başarısız oldu.</string>
     <string name="snack_download_verified">İndirme tamamlandı.</string>
     <string name="snack_update_not_installable">Bu güncelleme mevcut yapının üstüne kurulamaz.</string>
-    <string name="header_title_text">droid on time</string>
-    <string name="header_android_version">Android <xliff:g id="version" example="9.0">%1$s</xliff:g></string>
-    <string name="header_last_updates_check">Son kontrol: <xliff:g id="date" example="1 January 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>)</string>
-    <string name="list_build_version">DotOS <xliff:g id="version" example="dot-pie">%1$s</xliff:g></string>
-    <string name="list_build_version_date">DotOS <xliff:g id="version" example="dot-pie">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g></string>
-    <string name="list_download_progress_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> • <xliff:g id="percentage" example="56">%3$s</xliff:g></string>
-    <string name="list_download_progress_eta_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>) • <xliff:g id="percentage" example="56">%4$s</xliff:g></string>
+    <string name="header_title_text">Droid on time\n</string>
+    <string name="header_android_version">Android <xliff:g id="version" example="9.0">%1$s</xliff:g>    </string>
+    <string name="header_last_updates_check">Son kontrol: <xliff:g id="date" example="1 January 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>)    </string>
+    <string name="list_build_version">DotOS <xliff:g id="version" example="dot-pie">%1$s</xliff:g>    </string>
+    <string name="list_build_version_date">DotOS <xliff:g id="version" example="dot-pie">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g>    </string>
+    <string name="list_download_progress_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> • <xliff:g id="percentage" example="56">%3$s</xliff:g>    </string>
+    <string name="list_download_progress_eta_new"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>) • <xliff:g id="percentage" example="56">%4$s</xliff:g>    </string>
     <string name="list_verifying_update">Güncelleme doğrulanıyor</string>
     <string name="list_no_updates">Yeni güncelleme bulunamadı</string>
     <string name="list_no_updates_summary">Yeni güncellemeleri manuel olarak kontrol etmek için yenile tuşunu kullanın.</string>
@@ -86,8 +86,8 @@
     <string name="confirm_delete_dialog_title">Dosyayı Sil</string>
     <string name="confirm_delete_dialog_message">İndirilen güncelleme dosyalarını silmek istiyor musunuz?</string>
     <string name="apply_update_dialog_title">Güncellemeyi uygula</string>
-    <string name="apply_update_dialog_message"><xliff:g id="update_name">%1$s</xliff:g>\n\nyükseltmek üzeresiniz. <xliff:g id="ok">%2$s</xliff:g>, cihaz güncellemeyi yüklemek için kurtarma modunda yeniden başlatılır.\n\nNot: Bu özellik uyumlu bir kurtarma gerektirir veya güncellemelerin manuel olarak yüklenmesi gerekir.</string>
-    <string name="apply_update_dialog_message_ab"><xliff:g id="update_name">%1$s</xliff:g>\n\nyükseltmek üzeresiniz. <xliff:g id="ok">%2$s</xliff:g>, cihaz arka planda kurulmaya başlayacaktır.\n\nBunu tamamladığınızda, yeniden başlatmanız istenir.</string>
+    <string name="apply_update_dialog_message"><xliff:g id="update_name">%1$s</xliff:g>\n\nyükseltmek üzeresiniz. <xliff:g id="ok">%2$s</xliff:g>, cihaz güncellemeyi yüklemek için kurtarma modunda yeniden başlatılır.\n\nNot: Bu özellik uyumlu bir kurtarma gerektirir veya güncellemelerin manuel olarak yüklenmesi gerekir.    </string>
+    <string name="apply_update_dialog_message_ab"><xliff:g id="update_name">%1$s</xliff:g>\n\nyükseltmek üzeresiniz. <xliff:g id="ok">%2$s</xliff:g>, cihaz arka planda kurulmaya başlayacaktır.\n\nBunu tamamladığınızda, yeniden başlatmanız istenir.    </string>
     <string name="cancel_installation_dialog_message">Yükleme iptal edilsin mi?</string>
     <string name="label_download_url">İndirme bağlantısı</string>
     <string name="toast_download_url_copied">Bağlantı kopyalandı</string>
@@ -112,7 +112,7 @@
     <string name="checkbox_mobile_data_warning">Tekrar gösterme</string>
     <string name="menu_mobile_data_warning">Mobil veri uyarısı</string>
     <string name="blocked_update_dialog_title">Güncelleme engellendi</string>
-    <string name="blocked_update_dialog_message">Bu güncelleme, güncelleyici uygulaması kullanılarak kurulamaz. Daha fazla bilgi için lütfen  <xliff:g id="info_url">%1$s</xliff:g> adresini okuyun.</string>
+    <string name="blocked_update_dialog_message">Bu güncelleme, güncelleyici uygulaması kullanılarak kurulamaz. Daha fazla bilgi için lütfen  <xliff:g id="info_url">%1$s</xliff:g> adresini okuyun.    </string>
     <string name="export_channel_title">Dışa aktarma tamamlandı</string>
     <string name="new_updates_channel_title">Yeni güncellemeler</string>
     <string name="ongoing_channel_title">Devam eden indirmeler</string>
