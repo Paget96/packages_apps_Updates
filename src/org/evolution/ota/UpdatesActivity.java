@@ -331,10 +331,8 @@ public class UpdatesActivity extends UpdatesListActivity {
 
     private void processNewJson(File json, File jsonNew, boolean manualRefresh) {
         try {
-            if (mUpdaterService != null)
-                loadUpdatesList(jsonNew, manualRefresh);
-            if (json.exists() && Utils.isUpdateCheckEnabled(this) &&
-                    Utils.checkForNewUpdates(json, jsonNew)) {
+            loadUpdatesList(jsonNew, manualRefresh);
+            if (json.exists() && Utils.checkForNewUpdates(json, jsonNew, false)) {
                 UpdatesCheckReceiver.updateRepeatingUpdatesCheck(this);
             }
             // In case we set a one-shot check because of a previous failure
