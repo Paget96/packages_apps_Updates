@@ -52,6 +52,7 @@ import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import org.cesium.ota.misc.FetchChangelog;
 import org.json.JSONException;
 import org.cesium.ota.controller.UpdaterController;
 import org.cesium.ota.controller.UpdaterService;
@@ -115,6 +116,9 @@ public class UpdatesActivity extends UpdatesListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_updates);
+
+        FetchChangelog changelog = new FetchChangelog();
+        changelog.execute();
 
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         LastUpdateCheck = sharedPref.getString("LastUpdateCheck", "Not checked");
