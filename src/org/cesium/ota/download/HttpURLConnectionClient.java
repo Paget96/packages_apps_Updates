@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.evolution.ota.download;
+package org.cesium.ota.download;
 
 import android.os.SystemClock;
 import android.os.SystemProperties;
@@ -34,7 +34,7 @@ import java.util.PriorityQueue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.evolution.ota.misc.Constants;
+import org.cesium.ota.misc.Constants;
 
 public class HttpURLConnectionClient implements DownloadClient {
 
@@ -59,7 +59,7 @@ public class HttpURLConnectionClient implements DownloadClient {
     }
 
     private void setExtraHeaders(){
-        mClient.setRequestProperty("User-Agent", "org.evolution.ota");
+        mClient.setRequestProperty("User-Agent", "org.cesium.ota");
         mClient.setRequestProperty("Current-Build-Timestamp", SystemProperties.get(Constants.PROP_BUILD_DATE, "0"));
     }
 

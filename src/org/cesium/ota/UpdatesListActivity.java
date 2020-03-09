@@ -14,32 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.evolution.ota.model;
+package org.cesium.ota;
 
-import java.io.File;
+import androidx.appcompat.app.AppCompatActivity;
 
-public interface UpdateInfo extends UpdateBaseInfo {
-    UpdateStatus getStatus();
-
-    int getPersistentStatus();
-
-    File getFile();
-
-    long getFileSize();
-
-    int getProgress();
-
-    long getEta();
-
-    long getSpeed();
-
-    int getInstallProgress();
-
-    boolean getAvailableOnline();
-
-    boolean getFinalizing();
-
-    String getWhatsNew();
-
-    String getNotificationContent();
+public abstract class UpdatesListActivity extends AppCompatActivity {
+    public abstract void showSnackbar(int stringId, int duration);
 }

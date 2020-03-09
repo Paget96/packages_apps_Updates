@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.evolution.ota.controller;
+package org.cesium.ota.controller;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -29,13 +29,13 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
-import org.evolution.ota.R;
-import org.evolution.ota.UpdaterReceiver;
-import org.evolution.ota.UpdatesActivity;
-import org.evolution.ota.misc.StringGenerator;
-import org.evolution.ota.misc.Utils;
-import org.evolution.ota.model.UpdateInfo;
-import org.evolution.ota.model.UpdateStatus;
+import org.cesium.ota.R;
+import org.cesium.ota.UpdaterReceiver;
+import org.cesium.ota.UpdatesActivity;
+import org.cesium.ota.misc.StringGenerator;
+import org.cesium.ota.misc.Utils;
+import org.cesium.ota.model.UpdateInfo;
+import org.cesium.ota.model.UpdateStatus;
 
 import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;

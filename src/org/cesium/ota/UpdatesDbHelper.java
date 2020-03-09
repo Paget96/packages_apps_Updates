@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.evolution.ota;
+package org.cesium.ota;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -23,7 +23,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
-import org.evolution.ota.model.Update;
+import org.cesium.ota.model.Update;
 
 import java.io.File;
 import java.util.ArrayList;

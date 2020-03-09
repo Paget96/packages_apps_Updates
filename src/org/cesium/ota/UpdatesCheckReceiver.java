@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.evolution.ota;
+package org.cesium.ota;
 
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
@@ -29,8 +29,8 @@ import android.util.Log;
 import androidx.core.app.NotificationCompat;
 
 import org.json.JSONException;
-import org.evolution.ota.download.DownloadClient;
-import org.evolution.ota.misc.Utils;
+import org.cesium.ota.download.DownloadClient;
+import org.cesium.ota.misc.Utils;
 
 import java.io.File;
 import java.io.IOException;

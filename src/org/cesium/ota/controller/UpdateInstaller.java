@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.evolution.ota.controller;
+package org.cesium.ota.controller;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -23,11 +23,11 @@ import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.util.Log;
 
-import org.evolution.ota.misc.Constants;
-import org.evolution.ota.misc.FileUtils;
-import org.evolution.ota.misc.Utils;
-import org.evolution.ota.model.UpdateInfo;
-import org.evolution.ota.model.UpdateStatus;
+import org.cesium.ota.misc.Constants;
+import org.cesium.ota.misc.FileUtils;
+import org.cesium.ota.misc.Utils;
+import org.cesium.ota.model.UpdateInfo;
+import org.cesium.ota.model.UpdateStatus;
 
 import androidx.preference.PreferenceManager;
 

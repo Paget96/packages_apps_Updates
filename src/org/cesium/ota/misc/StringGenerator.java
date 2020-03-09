@@ -14,12 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.evolution.ota.misc;
+package org.cesium.ota.misc;
 
 import android.content.Context;
 import android.content.res.Resources;
 
-import org.evolution.ota.R;
+import org.cesium.ota.R;
 
 import java.text.DateFormat;
 import java.util.Date;
