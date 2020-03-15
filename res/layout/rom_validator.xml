@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/google_sans"
-        android:text="OTA Updater is compatible only with dotOS v3.0+"
+        android:text="OTA Updater is compatible only with CesiumOS v2.6+"
         android:textSize="17sp" />
 
     <Button

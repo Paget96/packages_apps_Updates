@@ -36,7 +36,7 @@
                 android:layout_below="@+id/header_title"
                 android:layout_marginStart="12dp"
                 android:fontFamily="@font/google_sans_bold"
-                android:text="version v3.0"
+                android:text="version v2.6"
                 android:textColor="@color/theme_accent"
                 android:textSize="18sp" />
 

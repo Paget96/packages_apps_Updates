@@ -1,4 +1,4 @@
 -keep class android.support.design.widget.** { *; }
 -keep interface android.support.design.widget.** { *; }
 
--keep class com.dotos.updater.ui.FlingBehavior { *; }
+-keep class org.cesium.ota.ui.FlingBehavior { *; }

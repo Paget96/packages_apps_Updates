@@ -153,13 +153,13 @@
         android:textColor="?android:attr/colorAccent"
         android:textSize="22sp" />
 
-    <com.dotos.updater.ui.ChangelogLayout
+    <org.cesium.ota.ui.ChangelogLayout
         android:id="@+id/changelog_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:background="@drawable/outline_bg">
 
-    </com.dotos.updater.ui.ChangelogLayout>
+    </org.cesium.ota.ui.ChangelogLayout>
 
 </LinearLayout>
